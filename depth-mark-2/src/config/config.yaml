@@ -1,7 +1,0 @@
-params:
-  initial_image_size: 576
-  embed_dim: 768
-  n_heads: 12
-  dims: [576,288,144,72]
-
-

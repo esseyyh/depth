@@ -1,4 +1,0 @@
----
-Epoch: 0 | Train Loss 1.3727138042449951
-train.py:64: UserWarning: Using a target size (torch.Size([1, 3, 576, 576])) that is different to the input size (torch.Size([1, 1, 576, 576])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
-  loss = torch.nn.functional.mse_loss(batch_depth, predicted_depth)

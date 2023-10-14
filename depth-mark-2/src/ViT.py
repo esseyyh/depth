@@ -108,17 +108,13 @@ class Block(nn.Module):
     def forward(self, x):
         
         x=self.patch(x)
-        print("hello")
         x = x + self.sa(self.ln1(x))
-        print("hello again")
         x = x + self.ffwd(self.ln2(x))
-        print("where is the issue")
         
         
         B,T,C=x.shape
         x=torch.reshape(x,(B,self.im_size,self.im_size,-1))
         x=x.permute(0,3,1,2)
-        print("final check")
         return x
 
 class convblock(nn.Module):
@@ -185,10 +181,6 @@ class depth_model(nn.Module):
 
     def forward(self, x):
         residuals=[]
-        #print("here")
-        #print(x.shape)
-        #x = self.first_block(x)
-        #print(x.shape)
 
         
 
@@ -197,7 +189,6 @@ class depth_model(nn.Module):
             print(x.shape)
             x = self.block[i](x)
             residuals.append(x)
-            print("one")
 
         for us, res in zip(self.upsampling, reversed(residuals)):
             # concatinaing and upsampling 
