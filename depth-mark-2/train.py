@@ -1,17 +1,8 @@
-import torch.nn as nn
-#import torchvision
-#import math
-import matplotlib.pyplot as plt
 import torch
-#import urllib
 import numpy as np
-import sys
-import PIL
-from PIL  import Image 
 import hydra
 from torch.utils.data import DataLoader
 
-#from torch.util.dataloader import CustomDataset
 from src.ViT import depth_model
 from utils.data import ImageDataset
 
@@ -30,7 +21,7 @@ def train (cfg):
     data_loader = DataLoader(dataset,cfg.params.batch_size)
    
 
-    for epoch in range(NOi_EPOCHS):
+    for epoch in range(NO_EPOCHS):
         mean_epoch_loss=[]
         for batch in data_loader:
 
@@ -55,7 +46,7 @@ def train (cfg):
         if epoch % PRINT_FREQUENCY == 0:
             print('---')
             print(f"Epoch: {epoch} | Train Loss {np.mean(mean_epoch_loss)}")
-
+            model.save("out/model.pt")
 
 
 

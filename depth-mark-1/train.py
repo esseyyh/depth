@@ -1,13 +1,5 @@
-import torch.nn as nn
-#import torchvision
-#import math
-import matplotlib.pyplot as plt
 import torch
-#import urllib
 import numpy as np
-import sys
-import PIL
-from PIL  import Image 
 import hydra
 from torch.utils.data import DataLoader
 
@@ -58,6 +50,7 @@ def train (cfg):
         if epoch % PRINT_FREQUENCY == 0:
             print('---')
             print(f"Epoch: {epoch} | Train Loss {np.mean(mean_epoch_loss)}")
+            model.save("out/model.pt")
 
 
 
