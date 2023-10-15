@@ -174,7 +174,7 @@ class depth_model(nn.Module):
                                                channels_out,
                                                downsample=False) for channels_in, channels_out in zip(self.dims_sequence[::-1], self.dims_sequence[::-1][1:])])
         
-    
+        self.final=nn.Conv2D(dims,1,3,1)
 
 
 
@@ -198,6 +198,6 @@ class depth_model(nn.Module):
 
 
 
-        return x
+        return self.final(x)
 
 

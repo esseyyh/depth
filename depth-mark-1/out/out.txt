@@ -1,0 +1,19 @@
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "train.py", line 39, in train
+    for batch in data_loader:
+  File "/home/essey/anaconda3/envs/check_mesh/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 633, in __next__
+    data = self._next_data()
+  File "/home/essey/anaconda3/envs/check_mesh/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 677, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/home/essey/anaconda3/envs/check_mesh/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 51, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/essey/anaconda3/envs/check_mesh/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 51, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/essey/Documents/Ml/eval/depth_task/depth-mark-1/utils/data.py", line 47, in __getitem__
+    image = torch.from_numpy(np.array((Image.open(image))))
+  File "/home/essey/anaconda3/envs/check_mesh/lib/python3.8/site-packages/PIL/Image.py", line 3218, in open
+    fp = builtins.open(filename, "rb")
+FileNotFoundError: [Errno 2] No such file or directory: 'home/essey/Documents/Ml/datastore/ViT/1_2_image.jpg'
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

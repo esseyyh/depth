@@ -19,19 +19,18 @@ from utils.data import ImageDataset
 
 @hydra.main(version_base=None,config_path="config",config_name="config")
 def train (cfg):
-    dataset=ImageDataset("/home/essey/Documents/Ml/datastore/ViT","/home/essey/Documents/Ml/eval/depth_task/depth-mark-2/config/joined-data.csv")
-    NO_EPOCHS = 1
-    PRINT_FREQUENCY = 1
-    LR = 0.001
-    BATCH_SIZE = 1
-    model = depth_model(cfg.params).to("cuda:0")
+    dataset=ImageDataset("home/essey/Documents/Ml/datastore/ViT","/home/essey/Documents/Ml/eval/depth_task/depth-mark-2/config/joined-data.csv")
+    
+    NO_EPOCHS = cfg.params.no_epoch
+    PRINT_FREQUENCY = cfg.params.print_fre
+    LR = cfg.params.LR
+
+    model = depth_model(cfg.hparams).to("cuda:0")
     optimizer = torch.optim.Adam(model.parameters(), lr=LR)
-    #_,d=dataset
-    # print(d[0].shape)
-    data_loader = DataLoader(dataset, batch_size=1)
+    data_loader = DataLoader(dataset,cfg.params.batch_size)
    
 
-    for epoch in range(NO_EPOCHS):
+    for epoch in range(NOi_EPOCHS):
         mean_epoch_loss=[]
         for batch in data_loader:
 
