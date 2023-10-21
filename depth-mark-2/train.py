@@ -10,13 +10,13 @@ from utils.data import ImageDataset
 
 @hydra.main(version_base=None,config_path="config",config_name="config")
 def train (cfg):
-    dataset=ImageDataset("home/essey/Documents/Ml/datastore/ViT","/home/essey/Documents/Ml/eval/depth_task/depth-mark-2/config/joined-data.csv")
+    dataset=ImageDataset("/home/kunet.ae/100053688/datastore/ViT/","/home/kunet.ae/100053688/hpc_tasks/depth-mark-2/config/joined-data.csv")
     
     NO_EPOCHS = cfg.params.no_epoch
     PRINT_FREQUENCY = cfg.params.print_fre
     LR = cfg.params.LR
 
-    model = depth_model(cfg.hparams).to("cuda:0")
+    model = depth_model(cfg.hparams).to("cuda")
     optimizer = torch.optim.Adam(model.parameters(), lr=LR)
     data_loader = DataLoader(dataset,cfg.params.batch_size)
    
@@ -30,9 +30,8 @@ def train (cfg):
             
     
             batch_image , batch_depth = batch
-            batch_depth=batch_depth.to("cuda:0")
-            batch_image=batch_image.to("cuda:0")
-            print(batch_image.shape)
+            batch_depth=batch_depth.to("cuda")
+            batch_image=batch_image.to("cuda")
   
 
             predicted_depth = model(batch_image)
@@ -46,7 +45,7 @@ def train (cfg):
         if epoch % PRINT_FREQUENCY == 0:
             print('---')
             print(f"Epoch: {epoch} | Train Loss {np.mean(mean_epoch_loss)}")
-            model.save("out/model.pt")
+            torch.save(model,"out/model.pt")
 
 
 

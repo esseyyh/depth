@@ -174,7 +174,7 @@ class depth_model(nn.Module):
                                                channels_out,
                                                downsample=False) for channels_in, channels_out in zip(self.dims_sequence[::-1], self.dims_sequence[::-1][1:])])
         
-        self.final=nn.Conv2D(dims,1,3,1)
+        self.final=nn.Conv2d(3,1,3,1,1)
 
 
 
@@ -186,14 +186,13 @@ class depth_model(nn.Module):
 
         for i in range(0, len(self.block)):
             x=self.downsampling[i](x)
-            print(x.shape)
+
             x = self.block[i](x)
             residuals.append(x)
 
         for us, res in zip(self.upsampling, reversed(residuals)):
             # concatinaing and upsampling 
             x = us(torch.cat((x, res), dim=1))      
-     
 
 
 
