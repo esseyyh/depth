@@ -16,10 +16,10 @@ def train (cfg):
     PRINT_FREQUENCY = cfg.params.print_fre
     LR = cfg.params.LR
 
-    model = depth_model(cfg.hparams).to("cuda")
+    model = depth_model(cfg.hparams1).to("cuda")
     optimizer = torch.optim.Adam(model.parameters(), lr=LR)
     data_loader = DataLoader(dataset,cfg.params.batch_size)
-   
+    print("train loss for model")
 
     for epoch in range(NO_EPOCHS):
         mean_epoch_loss=[]

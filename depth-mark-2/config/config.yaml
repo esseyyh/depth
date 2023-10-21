@@ -1,9 +1,24 @@
-hparams:
+hparams1:
   initial_image_size: 576
   n_heads: 16
   size: [288,144,72]
   dims: [3,4,16,64]
   patch_size: 12
+
+hparams2:
+  initial_image_size: 576
+  n_heads: 16
+  size: [288,144,72]
+  dims: [3,4,8,16]
+  patch_size: 12
+
+hparams3:
+  initial_image_size: 576
+  n_heads: 16
+  size: [288,144,72]
+  dims: [3,4,8,16]
+  patch_size: 12
+    
 params:
   no_epoch: 1
   batch_size: 4

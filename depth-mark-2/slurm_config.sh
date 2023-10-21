@@ -17,4 +17,4 @@ pip3 install hydra-core -q
 pip3 install numpy -q 
 pip3 install matplotlib -q
 pip3 install pillow -q
-python train.py  hydra/job_logging=disabled  1> out/out.txt 2>out/err.txt
+python train.py  hydra/job_logging=disabled  1>> out/out.txt 2>>out/err.txt
