@@ -1,11 +1,9 @@
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
-import PIL
-from PIL import Image
-import torchvision.transforms as transforms
-import numpy as np
 
+from src.network.multihead import MultiHeadAttention
+from src.network.layers.ffd import FeedFoward
+from src.network.patching import PatchEmbedding
 
 
 
@@ -32,27 +30,7 @@ class Block(nn.Module):
         
         
         B,T,C=x.shape
-        x=torch.reshape(x,(B,36,36,self.n_embd))
+        x=torch.reshape(x,(B,32,32,self.n_embd))
         x=x.permute(0,3,1,2)
         return x
     
-
-class decoder(nn.Module):
-        def __init__(self):
-            super().__init__()
-            self.encoder=Block(768,12)
-            
-            
-
-            
-            self.channels=[768,512,256,128,64]
-            self.block = nn.Sequential(*[blocks(ch1, ch2) for ch1, ch2 in zip(self.channels, self.channels[1:])])
-            self.convf=nn.Conv2d(self.channels[-1],1,3,padding=1)
-          
-        def forward(self,x):
-            x=self.encoder(x)
-            x=self.block(x)
-            x=self.convf(x)
-            
-            return x
-        
