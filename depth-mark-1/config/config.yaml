@@ -1,34 +1,30 @@
-hparams:
-  initial_image_size: 576
-  n_heads: 12
-  size: [288,144,72,36]
-  dims: [3,4,16,64,128]
-  patch_size: 12
 params:
-  no_epoch: 1
-  batch_size: 1
-  print_fre: 1
-  LR: 0.001
+    
+  no_epoch: 10000
+  save_fre: 1000
+
+  LR_1: 0.000001
+  LR_2: 0.0001
+  LR_3: 0.00001
+  LR_4: 0.0000001
+
+hydra:
+ output_subdir: null
+ run:
+  dir: .
 
 
 data:
-  root_dir: '~/Documents/Ml/datastore/ViT'
-  csv_dir:   '~/Documents/Ml/eval/depth_task/depth-mark-2/config/joined-data.csv'
-  batch_size: 1
-  shuffle: True
+  root_dir: "/home/kunet.ae/100053688/datastore/ViT"
+  csv_dir: "/home/kunet.ae/100053688/datastore/csv-files/joined-data.csv"
+  out_dir: "/home/kunet.ae/100053688/out/hpc_tasks_ae/trail_1/"
+  batch_size: 64
+  train_shuffle: True
+  test_shuffle: False
+  train_split:  0.7
+  test_split:  0.3
+  
 
-hydra:
-  output_subdir: null
-
-
-
-
-
-
-
-
-
-
-
+  
 
 

@@ -8,7 +8,7 @@ import numpy as np
 from src.network.encoder import Block
 from src.network.layers.conv import convblock
 
-class depth_model(nn.Module):
+class ViT(nn.Module):
 
     def __init__(self,params):
         super().__init__()
