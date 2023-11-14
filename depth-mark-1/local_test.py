@@ -52,7 +52,6 @@ def train (cfg):
             optimizer.step()
             print("test run")
             print(f"loss : {loss}")
-            print(images.shape)
     
         if epoch % cfg.params.save_fre == 0:
             print('---')
