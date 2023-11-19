@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --job-name=train_check
+#SBATCH --job-name=depth_1
 #SBATCH --time=50:00:00
 #SBATCH --partition=gpu
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:4
 #SBATCH --account=teach0013
-
+#sBATCH --exclusive
 module load miniconda/3 -q
 module load cuda/11.4 -q
 

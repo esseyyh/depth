@@ -11,10 +11,10 @@ params:
 
 
 data:
-  root_dir: "/home/kunet.ae/100053688/datastore/ViT"
-  csv_dir: "/home/kunet.ae/100053688/datastore/csv-files/joined-data.csv"
+  root_dir: "/home/kunet.ae/100053688/datastore/ViT-512"
+  csv_dir: "/home/kunet.ae/100053688/datastore/csv-files/joined-data-512.csv"
   out_dir: "/home/kunet.ae/100053688/out/hpc_tasks_depth/trail_1/"
-  batch_size: 64
+  batch_size: 8
   train_shuffle: True
   test_shuffle: False
   train_split:  0.7

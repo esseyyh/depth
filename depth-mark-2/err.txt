@@ -1,0 +1,32 @@
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/home/kunet.ae/100053688/hpc_tasks_depth/depth-mark-2/train_dis.py", line 103, in start
+    mp.spawn(main, args=(world_size,cfg), nprocs=world_size)
+  File "/home/kunet.ae/100053688/.local/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 240, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/kunet.ae/100053688/.local/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 198, in start_processes
+    while not context.join():
+  File "/home/kunet.ae/100053688/.local/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 160, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException: 
+
+-- Process 3 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/kunet.ae/100053688/.local/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 69, in _wrap
+    fn(i, *args)
+  File "/home/kunet.ae/100053688/hpc_tasks_depth/depth-mark-2/train_dis.py", line 91, in main
+    trainer.train(cfg.params.no_epoch)
+  File "/home/kunet.ae/100053688/hpc_tasks_depth/depth-mark-2/train_dis.py", line 60, in train
+    self._run_epoch(epoch)
+  File "/home/kunet.ae/100053688/hpc_tasks_depth/depth-mark-2/train_dis.py", line 50, in _run_epoch
+    self._run_batch(data)
+  File "/home/kunet.ae/100053688/hpc_tasks_depth/depth-mark-2/train_dis.py", line 40, in _run_batch
+    loss.backward()
+  File "/home/kunet.ae/100053688/.local/lib/python3.9/site-packages/torch/_tensor.py", line 396, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home/kunet.ae/100053688/.local/lib/python3.9/site-packages/torch/autograd/__init__.py", line 173, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: CUDA out of memory. Tried to allocate 4.00 GiB (GPU 3; 31.75 GiB total capacity; 28.73 GiB already allocated; 801.50 MiB free; 29.62 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

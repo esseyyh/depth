@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --job-name=train_check
-#SBATCH --time=22:00:00
+#SBATCH --job-name=depth_2
+#SBATCH --time=60:00:00
 #SBATCH --partition=gpu
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:4
 #SBATCH --account=teach0013
-
+#SBATCH --exclusive
 module load miniconda/3 -q
 module load cuda/11.4 -q
 
@@ -17,4 +17,4 @@ pip3 install hydra-core -q
 pip3 install numpy -q 
 pip3 install matplotlib -q
 pip3 install pillow -q
-python train_dis.py
+python train_dis.py 1>out.txt 2>err.txt

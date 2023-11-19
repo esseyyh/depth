@@ -36,7 +36,7 @@ class Trainer:
 
         data1 = data[0].to(self.gpu_id)
         output = self.model(data1)
-        loss = F.mse_loss(output,data[1].to("self.gpu_id"))
+        loss = F.mse_loss(output,data[1].to(self.gpu_id))
         loss.backward()
         self.optimizer.step()
 
@@ -51,7 +51,7 @@ class Trainer:
 
     def _save_checkpoint(self, epoch):
         ckp = self.model.module.state_dict()
-        PATH = "/home/kunet.ae/100053688/out/hpc_tasks_depth/trail_1/checkpoint.pt"
+        PATH = "/home/kunet.ae/100053688/out/hpc_tasks_depth/trial_1/checkpoint.pt"
         torch.save(ckp, PATH)
         print(f"Epoch {epoch} | Training checkpoint saved at {PATH}")
 

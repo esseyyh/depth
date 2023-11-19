@@ -51,7 +51,7 @@ class Trainer:
 
     def _save_checkpoint(self, epoch):
         ckp = self.model.module.state_dict()
-        PATH = "/home/kunet.ae/100053688/out/hpc_tasks_depth/trail_2/checkpoint.pt"
+        PATH = "/home/kunet.ae/100053688/out/hpc_tasks_depth/trial_2/checkpoint.pt"
         torch.save(ckp, PATH)
         print(f"Epoch {epoch} | Training checkpoint saved at {PATH}")
 
