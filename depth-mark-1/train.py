@@ -26,34 +26,35 @@ def train (cfg):
 
     model = ViT().to("cuda:0")
     optimizer = torch.optim.Adam(model.parameters(), lr=cfg.params.LR_1)
-    for epoch in range(cfg.params.no_epoch):
-        mean_epoch_loss=[]
-        for batch in train_loader:
+    print(sum(p.numel() for p in model.params()))
+    # for epoch in range(cfg.params.no_epoch):
+    #     mean_epoch_loss=[]
+    #     for batch in train_loader:
 
 
 
             
     
-            batch_image = batch[0]
-            batch_image=batch_image.to("cuda:0") 
-            images = model(batch_image)
+    #         batch_image = batch[0]
+    #         batch_image=batch_image.to("cuda:0") 
+    #         images = model(batch_image)
 
 
-            batch_depth = batch[1]
-            batch_depth=batch_depth.to("cuda:0") 
+    #         batch_depth = batch[1]
+    #         batch_depth=batch_depth.to("cuda:0") 
     
 
     
-            optimizer.zero_grad()
-            loss = torch.nn.functional.mse_loss(images,batch_depth) 
-            mean_epoch_loss.append(loss.item())
-            loss.backward()
-            optimizer.step()
+    #         optimizer.zero_grad()
+    #         loss = torch.nn.functional.mse_loss(images,batch_depth) 
+    #         mean_epoch_loss.append(loss.item())
+    #         loss.backward()
+    #         optimizer.step()
     
-        if epoch % cfg.params.save_fre == 0:
-            print('---')
-            print(f"Epoch: {epoch} | Train Loss {np.mean(mean_epoch_loss)}")
-            torch.save(model,"model.pt")
+    #     if epoch % cfg.params.save_fre == 0:
+    #         print('---')
+    #         print(f"Epoch: {epoch} | Train Loss {np.mean(mean_epoch_loss)}")
+    #         torch.save(model,"model.pt")
 
     print("#######")
     print("#################")

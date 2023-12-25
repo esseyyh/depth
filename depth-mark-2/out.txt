@@ -1,4 +1,0 @@
-[GPU2] Epoch 0 | Batchsize: 8 | Steps: 175
-[GPU3] Epoch 0 | Batchsize: 8 | Steps: 175
-[GPU0] Epoch 0 | Batchsize: 8 | Steps: 175
-[GPU1] Epoch 0 | Batchsize: 8 | Steps: 175

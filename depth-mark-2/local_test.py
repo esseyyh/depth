@@ -10,7 +10,7 @@ from utils.data import ImageDataset
 
 @hydra.main(version_base=None,config_path="config",config_name="config")
 def train (cfg):
-    dataset=ImageDataset("/home/essey/Documents/Ml/datastore/ViT-512/","/home/essey/Documents/Ml/datastore/joined-data-512.csv")#(cfg.data.root_dir,cfg.data.csv_dir)
+    dataset=ImageDataset("/home/essey/Documents/Ml/datastore/ViT-512/","/home/essey/Documents/Ml/datastore/csv-files/joined-data-512.csv")#(cfg.data.root_dir,cfg.data.csv_dir)
     #train_dataset, test_dataset = torch.utils.data.random_split(dataset, [0.7,0.3])
     
     train_indices = torch.arange(len(dataset))[:int(cfg.data.train_split * len(dataset))]
@@ -27,7 +27,11 @@ def train (cfg):
     model = ViT(cfg.hparams1).to("cuda:0")
     #model = torch.nn.DataParallel(model, device_ids=devices)
     optimizer = torch.optim.Adam(model.parameters(), lr=cfg.params.LR_1)
+    print(sum(p.numel() for p in model.parameters()))
+    """
     for epoch in range(cfg.params.no_epoch):
+
+
         mean_epoch_loss=[]
         for batch in train_loader:
 
@@ -62,6 +66,7 @@ def train (cfg):
     print("#######")
     print("#################")
     print("#######")
+    """
     #for epoch in range(cfg.params.no_epoch):
     #    mean_epoch_loss=[]
     #    for batch in test_loader:
